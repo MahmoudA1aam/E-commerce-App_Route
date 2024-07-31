@@ -3,15 +3,15 @@
 /// param : "phone"
 /// location : "body"
 
-class Errors {
-  Errors({
+class ErrorsModelDto {
+  ErrorsModelDto({
     this.value,
     this.msg,
     this.param,
     this.location,
   });
 
-  Errors.fromJson(dynamic json) {
+  ErrorsModelDto.fromJson(dynamic json) {
     value = json['value'];
     msg = json['msg'];
     param = json['param'];

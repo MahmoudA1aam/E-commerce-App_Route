@@ -1,6 +1,8 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:ecommerce/core/application_theme/application_theme.dart';
 import 'package:ecommerce/core/cofig/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import 'core/cofig/page_route_name.dart';
 
@@ -23,6 +25,8 @@ class MyApp extends StatelessWidget {
       initialRoute: PageRouteName.initial,
       onGenerateRoute: Routes.onGeneratedRoute,
       navigatorKey: navigatorKey,
+      builder: EasyLoading.init(builder: BotToastInit()),
+
     );
   }
 }

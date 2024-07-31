@@ -1,0 +1,21 @@
+import 'package:dartz/dartz.dart';
+import 'package:ecommerce/data/repository_imp/auth_repository_imp/auth_repository_imp/auth_repository_imp.dart';
+import 'package:ecommerce/domain/entitiy/auth_entitiy/register_entitiy/RegisterResponseEntitiy.dart';
+import 'package:ecommerce/domain/entitiy/failuresErrors/failures_errors.dart';
+import 'package:ecommerce/domain/repository_contract/auth_repository_contract/auth_repository_contract/auth_repository_contract.dart';
+
+
+class RegisterUseCase {
+  AuthRepositoryContract authRepositoryContract;
+
+  RegisterUseCase({required this.authRepositoryContract});
+
+  Future<Either<FailuresErrors,RegisterResponseModelEntity>> register(String name, String email,
+      String password, String rePassword, String phone) async {
+    return await authRepositoryContract.register(
+        name, email, password, rePassword, phone);
+  }
+}
+RegisterUseCase injectRegisterUseCase(){
+  return RegisterUseCase(authRepositoryContract: injectAuthRepositoryContract());
+}

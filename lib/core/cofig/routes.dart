@@ -3,9 +3,9 @@ import 'package:ecommerce/core/cofig/page_route_name.dart';
 
 import 'package:flutter/material.dart';
 
-import '../../presentation/auth/login/pages/login_view.dart';
-import '../../presentation/auth/register/pages/register_view.dart';
-import '../../presentation/splash/pages/splash_view.dart';
+import '../../presentation/pages/auth/login/login_view.dart';
+import '../../presentation/pages/auth/register/register_view.dart';
+import '../../presentation/pages/splash/splash_view.dart';
 
 class Routes {
   static Route<dynamic> onGeneratedRoute(RouteSettings settings) {

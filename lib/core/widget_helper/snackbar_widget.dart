@@ -34,7 +34,7 @@ class SnackBarService {
                     msg,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                      fontFamily: 'SF pro',
+                      fontFamily: 'Poppins',
                       fontSize: 16,
                       color: Colors.white,
                     ),
@@ -62,7 +62,7 @@ class SnackBarService {
                     overflow: TextOverflow.fade,
                     maxLines: 3,
                     style: const TextStyle(
-                      fontFamily: 'SF pro',
+                      fontFamily: 'Poppins',
                       fontSize: 16,
                       color: Colors.white,
                     ),
@@ -119,7 +119,7 @@ class SnackBarService {
                     // maxLines: 3,
                     // overflow: TextOverflow.fade,
                     style: const TextStyle(
-                      fontFamily: 'SF pro',
+                      fontFamily: 'Poppins',
                       fontSize: 16,
                       color: Colors.white,
                     ),
@@ -147,7 +147,7 @@ class SnackBarService {
                     textAlign: TextAlign.start,
                     maxLines: 3,
                     style: const TextStyle(
-                      fontFamily: 'SF pro',
+                      fontFamily: 'Poppins',
                       fontSize: 16,
                       color: Colors.white,
                     ),

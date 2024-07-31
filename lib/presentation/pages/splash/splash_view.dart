@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../../../core/cofig/page_route_name.dart';
 import '../../../main.dart';
 
+
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 

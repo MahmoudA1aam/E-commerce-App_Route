@@ -4,15 +4,15 @@
 /// rePassword : "Ahmed@123"
 /// phone : "01010700700"
 
-class RegisterRequest {
-  RegisterRequest({
+class RegisterRequestModelDto {
+  RegisterRequestModelDto({
       this.name, 
       this.email, 
       this.password, 
       this.rePassword, 
       this.phone,});
 
-  RegisterRequest.fromJson(dynamic json) {
+  RegisterRequestModelDto.fromJson(dynamic json) {
     name = json['name'];
     email = json['email'];
     password = json['password'];
