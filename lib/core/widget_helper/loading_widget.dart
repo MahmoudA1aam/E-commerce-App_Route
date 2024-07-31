@@ -3,8 +3,6 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 import '../application_theme/application_theme.dart';
 
-
-
 void configLoading() {
   EasyLoading.instance
     ..indicatorType = EasyLoadingIndicatorType.circle
@@ -14,7 +12,7 @@ void configLoading() {
     ..maskType = EasyLoadingMaskType.black
     ..backgroundColor = Colors.white
     ..textColor = Colors.white
-    ..indicatorColor = ApplicationTheme.appTheme.primaryColor
+    ..indicatorColor = ApplicationTheme.primaryColor
     ..userInteractions = false
     ..dismissOnTap = false;
 }

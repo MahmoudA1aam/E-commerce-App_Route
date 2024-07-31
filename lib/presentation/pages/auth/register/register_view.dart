@@ -20,8 +20,7 @@ class _RegisterViewState extends State<RegisterView> {
 
   @override
   void initState() {
-    registerCubit =
-        RegisterCubit(registerUseCase: injectRegisterUseCase());
+    registerCubit = RegisterCubit(registerUseCase: injectRegisterUseCase());
     // TODO: implement initState
     super.initState();
   }
@@ -41,7 +40,7 @@ class _RegisterViewState extends State<RegisterView> {
         } else if (state is RegisterSuccessState) {
           EasyLoading.dismiss();
           SnackBarService.showSuccessMessage(
-              state.registerResponseModelEntity.user?.name ?? "");
+              "${state.registerResponseModelEntity.user?.name ?? ""}\t\t\nSuccess");
         }
         // TODO: implement listener
       },
@@ -81,28 +80,7 @@ class _RegisterViewState extends State<RegisterView> {
                   const SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "Mobile Number",
-                    style: theme.textTheme.bodyLarge,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  CustomTextField(
-                    keyboardType: TextInputType.number,
-                    hintText: "enter your mobile",
-                    controller: registerCubit.mobilNumberController,
-                    validator: (value) {
-                      if (value == null || value.trim().isEmpty) {
-                        return "Please enter your mobile";
-                      } else {
-                        return null;
-                      }
-                    },
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
+
                   Text(
                     "E-mail address",
                     style: theme.textTheme.bodyLarge,
@@ -133,6 +111,29 @@ class _RegisterViewState extends State<RegisterView> {
                     height: 20,
                   ),
                   Text(
+                    "Mobile Number",
+                    style: theme.textTheme.bodyLarge,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  CustomTextField(
+                    keyboardType: TextInputType.number,
+                    hintText: "enter your mobile",
+                    controller: registerCubit.mobilNumberController,
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return "Please enter your mobile";
+                      } else {
+                        return null;
+                      }
+                    },
+                  ),
+
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Text(
                     "Password",
                     style: theme.textTheme.bodyLarge,
                   ),
@@ -157,7 +158,7 @@ class _RegisterViewState extends State<RegisterView> {
                       RegExp regEax = RegExp(
                           r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
                       if (value == null || value.trim().isEmpty) {
-                        return "Please enter your name";
+                        return "Please enter your Password";
                       }
 
                       if (!regEax.hasMatch(value)) {
