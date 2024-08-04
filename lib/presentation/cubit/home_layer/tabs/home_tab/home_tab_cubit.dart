@@ -13,34 +13,36 @@ class HomeTabCubit extends Cubit<HomeTabState> {
       : super(HomeTabInitialState());
   GetAllCategoryUseCase getAllCategoryUseCase;
   GetAllBrandUseCase getAllBrandUseCase;
-  List<DataOfCategoryOrBrandEntity>? listOfCategory;
-  List<DataOfCategoryOrBrandEntity>? listOfBrand;
+  List<DataOfCategoryOrBrandEntity> listOfCategory = [];
+  List<DataOfCategoryOrBrandEntity> listOfBrand = [];
 
-  void getAllCategory() async {
+  Future<bool> getAllCategory() async {
     emit(HomeTabCategoryLoadingState(loadingMessage: "Loading.."));
     var eitherResponse = await getAllCategoryUseCase.excute();
     return eitherResponse.fold(
-          (l) {
+      (l) {
         emit(HomeTabCategoryErrorState(errorMessage: l.errorMessage));
+        return Future.value(false);
       },
-          (response) {
+      (response) {
         listOfCategory = response.data ?? [];
         emit(HomeTabCategorySuccessState(categoryEntityModel: response));
+        return Future.value(true);
       },
     );
   }
-
 
   void getAllBrands() async {
     emit(HomeTabBrandLoadingState(loadingMessage: "Loading.."));
     var eitherResponse = await getAllBrandUseCase.excute();
     return eitherResponse.fold(
-          (l) {
+      (l) {
         emit(HomeTabBrandErrorState(errorMessage: l.errorMessage));
       },
-          (response) {
+      (response) {
         listOfBrand = response.data ?? [];
         emit(HomeTabBrandSuccessState(brandEntityModel: response));
       },
     );
-  }}
+  }
+}

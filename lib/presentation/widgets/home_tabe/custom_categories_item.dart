@@ -44,8 +44,9 @@ class CustomItemListCategoryOrBrand extends StatelessWidget {
         CircleAvatar(
           radius: 40,
           backgroundImage: NetworkImage(
-            dataEntity.image ?? '',
+            dataEntity.image ??'',
           ),
+
         ),
         Text(
             textAlign: TextAlign.center,

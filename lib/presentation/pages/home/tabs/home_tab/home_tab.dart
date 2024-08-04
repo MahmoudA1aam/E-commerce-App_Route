@@ -10,17 +10,34 @@ import '../../../../../domain/use_case/home_tabe_use_case/get_allCategory_use_ca
 import '../../../../widgets/home_tabe/custom_categories_item.dart';
 import '../../../../widgets/home_tabe/custom_item_announcement.dart';
 
-class HomeTab extends StatelessWidget {
+class HomeTab extends StatefulWidget {
   HomeTab({super.key});
 
-  HomeTabCubit homeTabCubit =
-      HomeTabCubit(getAllCategoryUseCase: injectHomeTabUseCase(),getAllBrandUseCase: injectGetAllBrandUseCase());
+  @override
+  State<HomeTab> createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<HomeTab> {
+  HomeTabCubit homeTabCubit = HomeTabCubit(
+      getAllCategoryUseCase: injectHomeTabUseCase(),
+      getAllBrandUseCase: injectGetAllBrandUseCase());
+ @override
+  void initState() {
+   Future.wait([homeTabCubit.getAllCategory(),])
+       .then((value) {
+     if (value[0] == true) {
+       return homeTabCubit.getAllBrands();
+     }
+    // TODO: implement initState
+    super.initState();
+  });}
 
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
     return BlocConsumer<HomeTabCubit, HomeTabState>(
-      bloc: homeTabCubit..getAllCategory()..getAllBrands(),
+      bloc: homeTabCubit
+     ,
       listener: (context, state) {
         // TODO: implement listener
       },
@@ -34,7 +51,7 @@ class HomeTab extends StatelessWidget {
               children: [
                 Padding(
                   padding: EdgeInsets.only(right: 17.w),
-                  child: CustomSearchTextField(),
+                  child: const CustomSearchTextField(),
                 ),
                 SizedBox(
                   height: 16.h,
@@ -54,14 +71,14 @@ class HomeTab extends StatelessWidget {
                       Text(
                         "Categories",
                         style: theme.textTheme.bodyLarge!
-                            .copyWith(color: Color(0xff06004F)),
+                            .copyWith(color: const Color(0xff06004F)),
                       ),
                       InkWell(
                         onTap: () {},
                         child: Text(
                           "view all",
                           style: theme.textTheme.labelMedium!
-                              .copyWith(color: Color(0xff06004F)),
+                              .copyWith(color: const Color(0xff06004F)),
                         ),
                       )
                     ],
@@ -71,7 +88,7 @@ class HomeTab extends StatelessWidget {
                   height: 16.h,
                 ),
                 state is HomeTabCategoryLoadingState
-                    ? CircularProgressIndicator()
+                    ? const CircularProgressIndicator()
                     : CustomCategoriesOrBrandItem(
                         list: homeTabCubit.listOfCategory,
                       ),
@@ -86,14 +103,14 @@ class HomeTab extends StatelessWidget {
                       Text(
                         "Brands",
                         style: theme.textTheme.bodyLarge!
-                            .copyWith(color: Color(0xff06004F)),
+                            .copyWith(color: const Color(0xff06004F)),
                       ),
                       InkWell(
                         onTap: () {},
                         child: Text(
                           "view all",
                           style: theme.textTheme.labelMedium!
-                              .copyWith(color: Color(0xff06004F)),
+                              .copyWith(color: const Color(0xff06004F)),
                         ),
                       )
                     ],
@@ -103,7 +120,7 @@ class HomeTab extends StatelessWidget {
                   height: 16.h,
                 ),
                 state is HomeTabBrandLoadingState
-                    ? CircularProgressIndicator()
+                    ? const CircularProgressIndicator()
                     : CustomCategoriesOrBrandItem(
                         list: homeTabCubit.listOfBrand,
                       ),
