@@ -17,7 +17,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     Timer(const Duration(seconds: 2), () {
-      navigatorKey.currentState?.pushReplacementNamed(PageRouteName.login);
+      navigatorKey.currentState?.pushReplacementNamed(PageRouteName.homeLayer);
     });
     // TODO: implement initState
     super.initState();

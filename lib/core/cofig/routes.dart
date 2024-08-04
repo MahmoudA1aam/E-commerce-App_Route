@@ -1,5 +1,5 @@
 import 'package:ecommerce/core/cofig/page_route_name.dart';
-
+import 'package:ecommerce/presentation/pages/home/home_layer.dart';
 
 import 'package:flutter/material.dart';
 
@@ -21,6 +21,10 @@ class Routes {
       case PageRouteName.register:
         return MaterialPageRoute(
           builder: (context) => RegisterView(),
+        );
+      case PageRouteName.homeLayer:
+        return MaterialPageRoute(
+          builder: (context) => HomeLayer(),
         );
       default:
         return MaterialPageRoute(
