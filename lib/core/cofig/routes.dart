@@ -1,5 +1,7 @@
 import 'package:ecommerce/core/cofig/page_route_name.dart';
+import 'package:ecommerce/domain/entitiy/tabs/product_tab_entity/ProductEntityModel.dart';
 import 'package:ecommerce/presentation/pages/home/home_layer.dart';
+import 'package:ecommerce/presentation/pages/home/tabs/product_tab/product_details_view/product_details_view.dart';
 
 import 'package:flutter/material.dart';
 
@@ -9,6 +11,7 @@ import '../../presentation/pages/splash/splash_view.dart';
 
 class Routes {
   static Route<dynamic> onGeneratedRoute(RouteSettings settings) {
+    final arguments = settings.arguments;
     switch (settings.name) {
       case PageRouteName.initial:
         return MaterialPageRoute(
@@ -26,6 +29,12 @@ class Routes {
         return MaterialPageRoute(
           builder: (context) => HomeLayer(),
         );
+      case PageRouteName.productDetails:
+        return MaterialPageRoute(
+            builder: (context) => ProductDetailsView(
+                  args: arguments as ProductDataEntity,
+                ));
+
       default:
         return MaterialPageRoute(
           builder: (context) => const SplashView(),

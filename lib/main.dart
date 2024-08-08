@@ -9,7 +9,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/cofig/page_route_name.dart';
 
-GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+// GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 void main() {
   Bloc.observer = MyBlocObserver();
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
           title: "E_Commerce",
           initialRoute: PageRouteName.initial,
           onGenerateRoute: Routes.onGeneratedRoute,
-          navigatorKey: navigatorKey,
+          // navigatorKey: navigatorKey,
           builder: EasyLoading.init(builder: BotToastInit()),
         );
       },

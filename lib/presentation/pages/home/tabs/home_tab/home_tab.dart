@@ -21,27 +21,29 @@ class _HomeTabState extends State<HomeTab> {
   HomeTabCubit homeTabCubit = HomeTabCubit(
       getAllCategoryUseCase: injectHomeTabUseCase(),
       getAllBrandUseCase: injectGetAllBrandUseCase());
- @override
+
+  @override
   void initState() {
-   Future.wait([homeTabCubit.getAllCategory(),])
-       .then((value) {
-     if (value[0] == true) {
-       return homeTabCubit.getAllBrands();
-     }
-    // TODO: implement initState
-    super.initState();
-  });}
+    Future.wait([
+      homeTabCubit.getAllCategory(),
+    ]).then((value) {
+      if (value[0] == true) {
+        return homeTabCubit.getAllBrands();
+      }
+      // TODO: implement initState
+      super.initState();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
     return BlocConsumer<HomeTabCubit, HomeTabState>(
-      bloc: homeTabCubit
-     ,
+      bloc: homeTabCubit,
       listener: (context, state) {
         // TODO: implement listener
       },
       builder: (context, state) {
+        ThemeData theme = Theme.of(context);
         return SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.only(
@@ -88,7 +90,9 @@ class _HomeTabState extends State<HomeTab> {
                   height: 16.h,
                 ),
                 state is HomeTabCategoryLoadingState
-                    ? const CircularProgressIndicator()
+                    ? const CircularProgressIndicator(
+                        color: Color(0xff06004F),
+                      )
                     : CustomCategoriesOrBrandItem(
                         list: homeTabCubit.listOfCategory,
                       ),
@@ -120,7 +124,9 @@ class _HomeTabState extends State<HomeTab> {
                   height: 16.h,
                 ),
                 state is HomeTabBrandLoadingState
-                    ? const CircularProgressIndicator()
+                    ? const CircularProgressIndicator(
+                        color: Color(0xff06004F),
+                      )
                     : CustomCategoriesOrBrandItem(
                         list: homeTabCubit.listOfBrand,
                       ),

@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce/presentation/pages/home/tabs/product_tab/categories_tab.dart';
+import 'package:ecommerce/presentation/pages/home/tabs/product_tab/product_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
@@ -11,7 +11,7 @@ part 'home_layer_state.dart';
 
 class HomeLayerCubit extends Cubit<HomeLayerState> {
   HomeLayerCubit() : super(HomeLayerInitialState());
-  int selectedIndex = 0;
+  int selectedIndex =1 ;
   List<Widget> screens = [HomeTab(), ProductTab(), FavoriteTab(), AccountTab()];
 
   changeIndex(int index) {

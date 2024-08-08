@@ -55,7 +55,8 @@ class CustomItemListCategoryOrBrand extends StatelessWidget {
                   ' ',
                   '\n',
                 ),
-            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
             style: theme.textTheme.bodyMedium!.copyWith(
                 color: Color(
                   0xff06004F,

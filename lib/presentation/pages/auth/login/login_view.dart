@@ -161,8 +161,8 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      navigatorKey.currentState
-                          ?.pushReplacementNamed(PageRouteName.register);
+                      Navigator.pushNamed(context, PageRouteName.register);
+
                     },
                     child: Text(
                       "Don’t have an account? Create Account",

@@ -3,4 +3,5 @@ class PageRouteName {
   static const String login = "login";
   static const String register = "register";
   static const String  homeLayer="homeLayer";
+  static const String  productDetails="productDetails";
 }
