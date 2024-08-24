@@ -52,12 +52,24 @@ class _RegisterViewState extends State<RegisterView> {
             child: Form(
               key: registerCubit.formKey,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset("assets/images/Route_image.png"),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                      )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset("assets/images/Route_image.png"),
+                    ],
+                  ),
                   const SizedBox(
-                    height: 20,
+                    height: 50,
                   ),
                   Text(
                     "Full Name",
@@ -80,7 +92,6 @@ class _RegisterViewState extends State<RegisterView> {
                   const SizedBox(
                     height: 20,
                   ),
-
                   Text(
                     "E-mail address",
                     style: theme.textTheme.bodyLarge,
@@ -129,7 +140,6 @@ class _RegisterViewState extends State<RegisterView> {
                       }
                     },
                   ),
-
                   const SizedBox(
                     height: 20,
                   ),

@@ -1,4 +1,7 @@
+import 'package:ecommerce/core/cofig/page_route_name.dart';
+import 'package:ecommerce/presentation/cubit/home_layer/tabs/cart_view/cart_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -31,7 +34,19 @@ class CustomSearchTextField extends StatelessWidget {
           ),
         ),
         const SizedBox(width: 15),
-        SvgPicture.asset("assets/icons/🦆 icon _shopping_cart.svg")
+        BlocBuilder<Cart_FavoriteCubit, CartState>(
+          builder: (context, state) {
+            return InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, PageRouteName.cartView);
+                },
+                child: Badge(
+                    label:
+                        Text(Cart_FavoriteCubit.get(context).numOfCartItem.toString()),
+                    child: SvgPicture.asset(
+                        "assets/icons/🦆 icon _shopping_cart.svg")));
+          },
+        )
       ],
     );
   }

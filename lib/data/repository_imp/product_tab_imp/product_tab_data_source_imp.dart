@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:ecommerce/domain/entitiy/tabs/product_tab_entity/Add_to_cart_Entity.dart';
 
 import '../../../domain/entitiy/failuresErrors/failures_errors.dart';
 import '../../../domain/entitiy/tabs/product_tab_entity/ProductEntityModel.dart';
@@ -22,9 +23,22 @@ class ProductTabDataSourceImp extends ProductTabDataSourceContract {
       },
     );
   }
+
+  @override
+  Future<Either<FailuresErrors, AddToCartEntity>> addToCart(
+      {required String productId}) async {
+    var eitherResponse =
+        await productTabApiManager.addToCart(productId: productId);
+    return eitherResponse.fold(
+      (l) {
+        return Left(FailuresErrors(errorMessage: l.errorMessage));
+      },
+      (response) {
+        return Right(response);
+      },
+    );
+  }
 }
-
-
 
 ProductTabDataSourceImp injectProductTabRemoteDataSource() {
   return ProductTabDataSourceImp(

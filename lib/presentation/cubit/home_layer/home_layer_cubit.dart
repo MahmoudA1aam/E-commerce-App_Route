@@ -11,7 +11,7 @@ part 'home_layer_state.dart';
 
 class HomeLayerCubit extends Cubit<HomeLayerState> {
   HomeLayerCubit() : super(HomeLayerInitialState());
-  int selectedIndex =1 ;
+  int selectedIndex = 0;
   List<Widget> screens = [HomeTab(), ProductTab(), FavoriteTab(), AccountTab()];
 
   changeIndex(int index) {

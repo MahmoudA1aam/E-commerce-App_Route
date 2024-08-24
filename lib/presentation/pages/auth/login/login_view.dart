@@ -1,4 +1,5 @@
 import 'package:ecommerce/core/cofig/page_route_name.dart';
+import 'package:ecommerce/core/widget_helper/shared_preference.dart';
 import 'package:ecommerce/main.dart';
 import 'package:ecommerce/presentation/cubit/auth/login/login_cubit.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,12 @@ class _LoginViewState extends State<LoginView> {
           EasyLoading.dismiss();
           SnackBarService.showSuccessMessage(
               "${state.loginResponseEntityModel.user?.name ?? ""}\t\t\nSuccess");
+
+          SharedPreferenceUtils.saveDate(
+              key: "Token", value: state.loginResponseEntityModel.token);
+          Navigator.pushReplacementNamed(context, PageRouteName.homeLayer);
         }
+
         // TODO: implement listener
       },
       child: Scaffold(
@@ -58,7 +64,7 @@ class _LoginViewState extends State<LoginView> {
                 children: [
                   Image.asset("assets/images/Route_image.png"),
                   const SizedBox(
-                    height: 20,
+                    height: 50,
                   ),
                   Text(
                     "Welcome Back To Route",
@@ -162,7 +168,6 @@ class _LoginViewState extends State<LoginView> {
                   GestureDetector(
                     onTap: () {
                       Navigator.pushNamed(context, PageRouteName.register);
-
                     },
                     child: Text(
                       "Don’t have an account? Create Account",

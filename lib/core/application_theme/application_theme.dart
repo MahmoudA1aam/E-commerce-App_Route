@@ -30,11 +30,16 @@ class ApplicationTheme {
               fontSize: 18,
               fontFamily: "Poppins",
               color: Colors.white),
-          labelMedium: TextStyle(
+          labelMedium:const  TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 12,
               fontFamily: "Poppins",
-              color: Colors.white)),
+              color: Colors.white),
+      labelLarge:const TextStyle(
+          fontWeight: FontWeight.w800,
+          fontSize: 18,
+          fontFamily: "Poppins",
+          color: Color(0xff06004F)) ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: Color(0xFF004182),
       ));
