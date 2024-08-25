@@ -39,6 +39,7 @@ class Cart_FavoriteCubit extends Cubit<CartState> {
 
   int? totalPrice = 0;
   int? numOfCartItem = 0;
+  bool? inCart ;
 
   static Cart_FavoriteCubit get(context) => BlocProvider.of(context);
 
@@ -68,7 +69,6 @@ class Cart_FavoriteCubit extends Cubit<CartState> {
         emit(DeleteItemOfCartErrorState(errorMessage: l.errorMessage));
       },
       (response) {
-
         totalPrice = response.data?.totalCartPrice;
         productList = response.data?.products ?? [];
         numOfCartItem = response.numOfCartItems ?? 0;
@@ -198,16 +198,7 @@ class Cart_FavoriteCubit extends Cubit<CartState> {
     );
   }
 
-  bool isInCart(
-    ProductDataEntity product,
-  ) {
-    if (productList.isNotEmpty) {
-      for (int i = 0; i < productList.length; i++) {
-        if (product.id == productList[i].id) {
-          return true;
-        }
-      }
-    }
-    return false;
+  bool isInCart(bool inTheCart) {
+    return inCart = inTheCart;
   }
 }

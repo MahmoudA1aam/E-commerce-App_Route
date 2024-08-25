@@ -98,11 +98,12 @@ class _ProductTabState extends State<ProductTab> {
                                       }
                                     }
                                   }
+                                  cartCubit.isInCart(inCart);
 
                                   return CustomProductItem(
                                     count: count,
                                     data: productList,
-                                    inCart: inCart,
+                                    inCart:  cartCubit.isInCart(inCart),
                                     isFavorite: isFavorite,
                                   );
                                 },
